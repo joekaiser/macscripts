@@ -89,6 +89,6 @@ Jobs="\j"
 #makes ~/a/long/directory/path into ~/a.../directory/path
 ShortPwd='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{if (length($0) > 25) { if (NF>4) print $1 "/" $2 "/" $3 ".../" $(NF-1) "/" $NF; else if (NF>3) print $1 "/" $2 "/.../" $NF; else print $1 "/.../" $NF; } else print $0;}'"'"')'
 
-export PS1=$IBlue$ShortPwd$IYellow' `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'$Color_Off'⌘ '
+export PS1='\n'$IBlue$ShortPwd$IYellow' `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'$Color_Off'⌘ '
 
 
