@@ -142,18 +142,18 @@ sp=$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '{if (length($0) > 25) { if (NF>4) p
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘ "
   [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
 
-  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment NONE NONE "$symbols"
 }
 
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
-  prompt_context
+  #prompt_context
   prompt_dir
   prompt_git
   prompt_hg
